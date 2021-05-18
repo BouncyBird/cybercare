@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+{% if request.MOBILE %}
+<img src="https://raw.githubusercontent.com/BouncyBird/hhoster/main/oie_oie_overlay%20(1).gif" data-aos='fade-up'
+        class="lb" style="width: 100%;object-fit: contain;">
+{% else %}
+<div>
+        <a href="{{ url_for('disease_check') }}
+            "><button type="button" class="btn btn-info btn-lg m-1 lb7" data-tilt data-tilt-scale="1.05"
+                        data-aos="zoom-in">DiseaseCheck</button></a>
+        <div class="dropdown">
+                <button type="button" class="btn btn-info btn-lg m-1 lb5 dropdown-toggle" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-tilt
+                        data-tilt-scale="1.05" data-aos="zoom-in">Mental Health</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ url_for('anxiety') }}">Anxiety</a>
+                        <a class="dropdown-item" href="{{ url_for('asmr') }}">ASMR</a>
+                </div>
+        </div>
+        <a href="{{ url_for('routines') }}
+    "><button type="button" class="btn btn-info btn-lg m-1 lb6" data-tilt data-tilt-scale="1.05"
+                        data-aos="zoom-in">Routines</button></a>
+        <a href="{{ url_for('about') }}"><button type="button" class="btn btn-info btn-md m-1 lb2" data-tilt
+                        data-tilt-scale="1.05" data-aos="zoom-in">About
+                        Us</button></a>
+        <a href="{{ url_for('contact') }}"><button type="button" class="btn btn-info btn-md m-1 lb3" data-tilt
+                        data-tilt-scale="1.05" data-aos="zoom-in">Contact
+                        Us</button></a>
+        <div class="dropdown">
+                <button type="button" class="btn btn-info btn-lg m-1 lb4 dropdown-toggle" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-tilt
+                        data-tilt-scale="1.05" data-aos="zoom-in">FoodTools</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ url_for('nutrisearch') }}">NutriSearch</a>
+                        <a class="dropdown-item" href="{{ url_for('recisearch') }}">ReciSearch</a>
+                </div>
+        </div>
+</div>
+<img src="https://raw.githubusercontent.com/BouncyBird/hhoster/main/oie_oie_overlay%20(1).gif" class="lb"
+        data-aos='fade-up'>
+{% endif %}
+{% endblock content %}
+{% block stylesheet %}
+<style>
+        body {
+                background-image: url('https://image.freepik.com/free-vector/medical-concept-with-doctor-patients-flat-cartoon-hospital-hall_36082-555.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+        }
+</style>
+{% endblock stylesheet %}

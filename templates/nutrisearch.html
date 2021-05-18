@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">
+                <h1 class="text-5xl font-bold pb-2">NutriSearch</h1>
+            </legend>
+            <p class="pb-3">Have a barcode you want to scan? Just enter the numbers below the barcode(thats the UPC). Or
+                use a online
+                barcode decoder like <a href="https://www.onlinebarcodereader.com/" class="text-blue-500">this</a>
+            </p>
+            <div class="form-group">
+                {{ form.query.label(class="form-control-label font-bold") }}
+                {% if form.query.errors %}
+                {{ form.query(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.query.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.query(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <p class="font-bold">Filters:</p>
+            <div class="flex flex-row flex-wrap space-x-4">
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.alcohol_free(class="form-check-input") }}
+                    {{ form.alcohol_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.celery_free(class="form-check-input") }}
+                    {{ form.celery_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.crustacean_free(class="form-check-input") }}
+                    {{ form.crustacean_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.dairy_free(class="form-check-input") }}
+                    {{ form.dairy_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.egg_free(class="form-check-input") }}
+                    {{ form.egg_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.fish_free(class="form-check-input") }}
+                    {{ form.fish_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.fodmap_free(class="form-check-input") }}
+                    {{ form.fodmap_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.gluten_free(class="form-check-input") }}
+                    {{ form.gluten_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.kosher(class="form-check-input") }}
+                    {{ form.kosher.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.lupine_free(class="form-check-input") }}
+                    {{ form.lupine_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.mustard_free(class="form-check-input") }}
+                    {{ form.mustard_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.No_oil_added(class="form-check-input") }}
+                    {{ form.No_oil_added.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.low_sugar(class="form-check-input") }}
+                    {{ form.low_sugar.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.paleo(class="form-check-input") }}
+                    {{ form.paleo.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.peanut_free(class="form-check-input") }}
+                    {{ form.peanut_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.pecatarian(class="form-check-input") }}
+                    {{ form.pecatarian.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.pork_free(class="form-check-input") }}
+                    {{ form.pork_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.red_meat_free(class="form-check-input") }}
+                    {{ form.red_meat_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.sesame_free(class="form-check-input") }}
+                    {{ form.sesame_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.shellfish_free(class="form-check-input") }}
+                    {{ form.shellfish_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.soy_free(class="form-check-input") }}
+                    {{ form.soy_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.tree_nut_free(class="form-check-input") }}
+                    {{ form.tree_nut_free.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.vegan(class="form-check-input") }}
+                    {{ form.vegan.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.vegetarian(class="form-check-input") }}
+                    {{ form.vegetarian.label(class="form-check-label") }}
+                </div>
+                <div class="form-check" data-aos="zoom-in">
+                    {{ form.wheat_free(class="form-check-input") }}
+                    {{ form.wheat_free.label(class="form-check-label") }}
+                </div>
+            </div>
+            <div class="flex flex-row flex-wrap space-x-4 pt-2">
+                <div class="form-group">
+                    {{ form.calorie_filter1.label(class="form-control-label font-bold") }}
+                    {% if form.calorie_filter1.errors %}
+                    {{ form.calorie_filter1(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.calorie_filter1.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.calorie_filter1(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.calorie_filter2.label(class="form-control-label font-bold") }}
+                    {% if form.calorie_filter1.errors %}
+                    {{ form.calorie_filter2(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.calorie_filter2.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.calorie_filter2(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form.category.label(class="form-control-label font-bold") }}
+                {% if form.category.errors %}
+                {{ form.category(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.category.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.category(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+<hr>
+<p class="pt-3 pb-3">{{ r["hints"]|length }} results found</p>
+{% for i in r["hints"] %}
+<div class="content-section">
+    <img src="{{ i['food']['image'] }}" alt="Food Image" style="object-fit: contain;">
+    <br><br><br>
+    <h2 class="article-title text-3xl font-bold">{{ i["food"]["label"] }}</h2>
+    <br>
+    <hr>
+    <p class="pb-2 pt-2">Category: {{ i["food"]["category"] }}</p>
+    {% if i["food"]["servingSizes"] is defined %}
+    <hr>
+    <p class="pt-2 pb-2">Serving Size: {{ i["food"]["servingSizes"][0]['quantity'] }} {{
+        i["food"]["servingSizes"][0]['label'] }}(s)</p>{% endif %}
+    <hr>
+    <div class="pt-2 pb-2">
+        <strong>
+            <p>Nutrition Facts:</p>
+        </strong>
+        <p>Calories: {{ i["food"]["nutrients"]["ENERC_KCAL"] }}</p>
+        <p>Fat: {{ i["food"]["nutrients"]["FAT"] }}</p>
+        <p>Carbohydrates: {{ i["food"]["nutrients"]["CHOCDF"] }}</p>
+        <p>Fiber: {{ i["food"]["nutrients"]["FIBTG"] }}</p>
+        <p>Protein: {{ i["food"]["nutrients"]["PROCNT"] }}</p>
+    </div>
+    <hr>
+    <p class="pt-2 pb-2"><b>Ingredients</b>: {{ i["food"]["foodContentsLabel"] }}</p>
+    <hr>
+    <p class="pt-2">Brand: {{ i["food"]["brand"] }}</p>
+</div>
+{% endfor %}
+
+{% endblock content %}
