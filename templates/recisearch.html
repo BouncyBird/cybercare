@@ -152,56 +152,45 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="form-group">
-                {{ form.cuisines.label(class="form-control-label font-bold") }}
-                {% if form.cuisines.errors %}
-                {{ form.cuisines(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.cuisines.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
+            <div class="flex flex-row flex-wrap space-x-4 pt-2">
+                <div class="form-group">
+                    {{ form.time_filter1.label(class="form-control-label font-bold") }}
+                    {% if form.time_filter1.errors %}
+                    {{ form.time_filter1(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.time_filter1.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.time_filter1(class="form-control form-control-lg") }}
+                    {% endif %}
                 </div>
-                {% else %}
-                {{ form.cuisines(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div>
-                {{ form.dishtype.label(class="form-control-label font-bold") }}
-                {% if form.dishtype.errors %}
-                {{ form.dishtype(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.dishtype.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
+                <div class="form-group">
+                    {{ form.time_filter2.label(class="form-control-label font-bold") }}
+                    {% if form.time_filter1.errors %}
+                    {{ form.time_filter2(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.time_filter2.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.time_filter2(class="form-control form-control-lg") }}
+                    {% endif %}
                 </div>
-                {% else %}
-                {{ form.dishtype(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.mealtype.label(class="form-control-label font-bold") }}
-                {% if form.mealtype.errors %}
-                {{ form.mealtype(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.mealtype.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% else %}
-                {{ form.mealtype(class="form-control form-control-lg") }}
-                {% endif %}
             </div>
             <div class="form-group">
-                {{ form.diet.label(class="form-control-label font-bold") }}
-                {% if form.diet.errors %}
-                {{ form.diet(class="form-control form-control-lg is-invalid") }}
+                {{ form.max_ingredients.label(class="form-control-label font-bold") }}
+                {% if form.max_ingredients.errors %}
+                {{ form.max_ingredients(class="form-control form-control-lg is-invalid") }}
                 <div class="invalid-feedback">
-                    {% for error in form.diet.errors %}
+                    {% for error in form.max_ingredients.errors %}
                     <span>{{ error }}</span>
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.diet(class="form-control form-control-lg") }}
+                {{ form.max_ingredients(class="form-control form-control-lg") }}
                 {% endif %}
             </div>
         </fieldset>
