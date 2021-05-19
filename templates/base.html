@@ -79,9 +79,10 @@
                         </div>
                     </li>
                 </div>
-                <marquee onmouseover="this.stop();" onmouseout="this.start();">
+                <marquee id="marq">
                     <a href="{{ url_for('contact') }}"><button type="button" class="btn btn-info btn-sm m-1" data-tilt
-                            data-tilt-scale="1.05">{% if route == 'contact' %}<text
+                            data-tilt-scale="1.05" onmouseover="document.getElementById('marq').stop();"
+                            onmouseout="document.getElementById('marq').start();">{% if route == 'contact' %}<text
                                 style="color: white;">Contact</text>{% else %}Contact{%
                             endif
                             %}</button></a>
