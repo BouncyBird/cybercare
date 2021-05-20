@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, Markup
 from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import StringField, SubmitField, TextAreaField, BooleanField, SelectField, IntegerField, FieldList
+from wtforms import StringField, SubmitField, TextAreaField, BooleanField, SelectField, IntegerField, DecimalField
 from flask_wtf.file import FileField, FileRequired
 from werkzeug.utils import secure_filename
 from wtforms.fields.core import Field
@@ -176,6 +176,26 @@ class ReciSearchForm(FlaskForm):
     submit = SubmitField('Search')
 
 
+class BMIForm(FlaskForm):
+    age = DecimalField(
+        'Age(Years)', places=2, validators=[Optional()])
+    weight = DecimalField(
+        'Weight(Pounds)', places=2, validators=[Optional()])
+    height = DecimalField(
+        'Height(Inches)', places=2, validators=[Optional()])
+    submit = SubmitField('Calculate')
+
+
+class IdealWeightForm(FlaskForm):
+    gender = SelectField('Gender', choices=[
+                         ('male', 'Male'), ('female', 'Female')], validators=[DataRequired()])
+    weight = DecimalField(
+        'Weight(Pounds)', places=2, validators=[Optional()])
+    height = DecimalField(
+        'Height(Inches)', places=2, validators=[Optional()])
+    submit = SubmitField('Calculate')
+
+
 """class NutriScanForm(FlaskForm):
     image = FileField('Image of Barcode', validators=[FileRequired()])
     submit = SubmitField('Search')"""
@@ -317,7 +337,7 @@ def recisearch():
         if form.time_filter1.data != None and form.time_filter2.data != None:
             timefilt = f'&time={form.time_filter1.data}-{form.time_filter2.data}'
         elif form.time_filter1.data != None and form.time_filter2.data == None:
-            timefilt = f'&time={form.ctime_filter1.data}%2B'
+            timefilt = f'&time={form.time_filter1.data}%2B'
         elif form.time_filter1.data == None and form.time_filter2.data != None:
             timefilt = f'&time=0-{form.time_filter2.data}'
         elif form.time_filter1.data == None and form.time_filter2.data == None:
@@ -370,6 +390,52 @@ def depression():
 @app.route('/mentalhealth/anger')
 def anger():
     return render_template('anger.html', title='Anger - Mental Health', route='mental_health')
+
+
+@app.route('/weighttools/bmi', methods=["GET", "POST"])
+def bmi():
+    form = BMIForm()
+    if form.validate_on_submit():
+        height = float(form.height.data) * 2.54
+        weight = float(form.weight.data) / 2.205
+        url = "https://fitness-calculator.p.rapidapi.com/bmi"
+
+        querystring = {"age": str(form.age.data),
+                       "weight": str(weight), "height": str(height)}
+
+        headers = {
+            'x-rapidapi-key': "4768364f52mshf6f95184e114982p1c9548jsn9fff5ab8c3b1",
+            'x-rapidapi-host': "fitness-calculator.p.rapidapi.com"
+        }
+
+        response = requests.request(
+            "GET", url, headers=headers, params=querystring)
+
+        return render_template('bmi.html', title='BMI Calculator', route='weighttools', form=form, res=response.json())
+    return render_template('bmi.html', title='BMI Calculator', route='weighttools', form=form, res='')
+
+
+@app.route('/weighttools/idealweight', methods=["GET", "POST"])
+def idealweight():
+    form = IdealWeightForm()
+    if form.validate_on_submit():
+        height = float(form.height.data) * 2.54
+        weight = float(form.weight.data) / 2.205
+        url = "https://fitness-calculator.p.rapidapi.com/idealweight"
+
+        querystring = {"gender": form.gender.data,
+                       "weight": weight, "height": height}
+
+        headers = {
+            'x-rapidapi-key': "4768364f52mshf6f95184e114982p1c9548jsn9fff5ab8c3b1",
+            'x-rapidapi-host': "fitness-calculator.p.rapidapi.com"
+        }
+
+        response = requests.request(
+            "GET", url, headers=headers, params=querystring)
+        print(response.text)
+        return render_template('idealweight.html', res=response.json(), title='Ideal Weight Calculator', route='weighttools', form=form)
+    return render_template('idealweight.html', title='Ideal Weight Calculator', route='weighttools', form=form, res='')
 
 
 if __name__ == "__main__":

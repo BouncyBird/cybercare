@@ -70,6 +70,17 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" data-tilt data-tilt-scale="1.05">
+                            {% if route == 'weighttools' %}<text style="color: white;">WeightTools</text>{% else
+                            %}WeightTools{%endif %}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url_for('bmi') }}">BMI Calculator</a>
+                            <a class="dropdown-item" href="{{ url_for('idealweight') }}">Ideal Weight Calculator</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" data-tilt data-tilt-scale="1.05">
                             {% if route == 'mental_health' %}<text style="color: white;">MentalHealth</text>{% else
                             %}MentalHealth{%endif %}
                         </a>
