@@ -189,8 +189,6 @@ class BMIForm(FlaskForm):
 class IdealWeightForm(FlaskForm):
     gender = SelectField('Gender', choices=[
                          ('male', 'Male'), ('female', 'Female')], validators=[DataRequired()])
-    weight = DecimalField(
-        'Weight(Pounds)', places=2, validators=[Optional()])
     height = DecimalField(
         'Height(Inches)', places=2, validators=[Optional()])
     submit = SubmitField('Calculate')
@@ -387,9 +385,9 @@ def depression():
     return render_template('depression.html', title='Depression - Mental Health', route='mental_health')
 
 
-@app.route('/mentalhealth/anger')
-def anger():
-    return render_template('anger.html', title='Anger - Mental Health', route='mental_health')
+@app.route('/mentalhealth/lackocalm')
+def lackocalm():
+    return render_template('anger.html', title="Lack O' Calm - Mental Health", route='mental_health')
 
 
 @app.route('/weighttools/bmi', methods=["GET", "POST"])
@@ -420,11 +418,10 @@ def idealweight():
     form = IdealWeightForm()
     if form.validate_on_submit():
         height = float(form.height.data) * 2.54
-        weight = float(form.weight.data) / 2.205
         url = "https://fitness-calculator.p.rapidapi.com/idealweight"
 
         querystring = {"gender": form.gender.data,
-                       "weight": weight, "height": height}
+                       "weight": "0", "height": height}
 
         headers = {
             'x-rapidapi-key': "4768364f52mshf6f95184e114982p1c9548jsn9fff5ab8c3b1",
@@ -435,10 +432,14 @@ def idealweight():
             "GET", url, headers=headers, params=querystring)
 
         fres = response.json()
-        nd = round(float(fres["Devine"]) * 2.205, 2)
-        nh = round(float(fres["Hamwi"]) * 2.205, 2)
-        nm = round(float(fres["Miller"]) * 2.205, 2)
-        nr = round(float(fres["Robinson"]) * 2.205, 2)
+        try:
+            nd = round(float(fres["Devine"]) * 2.205, 2)
+            nh = round(float(fres["Hamwi"]) * 2.205, 2)
+            nm = round(float(fres["Miller"]) * 2.205, 2)
+            nr = round(float(fres["Robinson"]) * 2.205, 2)
+        except:
+            flash('Height is too low', 'warning')
+            return redirect(url_for('idealweight'))
         fres["Devine"] = nd
         fres["Hamwi"] = nh
         fres["Miller"] = nm
