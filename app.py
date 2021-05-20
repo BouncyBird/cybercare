@@ -433,8 +433,17 @@ def idealweight():
 
         response = requests.request(
             "GET", url, headers=headers, params=querystring)
-        print(response.text)
-        return render_template('idealweight.html', res=response.json(), title='Ideal Weight Calculator', route='weighttools', form=form)
+
+        fres = response.json()
+        nd = round(float(fres["Devine"]) * 2.205, 2)
+        nh = round(float(fres["Hamwi"]) * 2.205, 2)
+        nm = round(float(fres["Miller"]) * 2.205, 2)
+        nr = round(float(fres["Robinson"]) * 2.205, 2)
+        fres["Devine"] = nd
+        fres["Hamwi"] = nh
+        fres["Miller"] = nm
+        fres["Robinson"] = nr
+        return render_template('idealweight.html', res=fres, title='Ideal Weight Calculator', route='weighttools', form=form)
     return render_template('idealweight.html', title='Ideal Weight Calculator', route='weighttools', form=form, res='')
 
 
