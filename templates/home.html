@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-{% if request.MOBILE %}
+<!--{% if request.MOBILE %}
 <img src="https://raw.githubusercontent.com/BouncyBird/hhoster/main/oie_oie_overlay%20(1).gif" data-aos='fade-up'
         class="lb" style="width: 100%;object-fit: contain;">
 {% else %}
@@ -44,12 +44,67 @@
 </div>
 <img src="https://raw.githubusercontent.com/BouncyBird/hhoster/main/oie_oie_overlay%20(1).gif" class="lb"
         data-aos='fade-up'>
-{% endif %}
+{% endif %}-->
+<div class="font-bold text-gray-700 rounded-full bg-white flex flex-col items-center justify-center font-mono"
+        style="height: 175px; width: 600px; font-size: 28px; position: absolute;position: absolute; top: 1350%; right: 55%;"
+        data-aos='fade-left'>
+        <p style="font-size: 50px;">CyberCare</p>
+        <p class="text-grey-500">What lets YOU be YOU</p>
+</div>
+<a href="{{ url_for('disease_check') }}">
+        <div class="font-bold text-gray-700 rounded-full bg-white flex flex-col items-center justify-center font-mono"
+                style="height: 250px; width: 250px; font-size: 28px; position: absolute;position: absolute; top: 160%; left: 102%;"
+                data-tilt data-tilt-scale="1.1" data-aos='fade-left'>
+                DiseaseCheck<br>
+                <img src="{{ url_for('static', filename='dcp.png') }}" alt="DiseaseCheck" style="object-fit: contain;"
+                        height="40%" width="40%">
+        </div>
+</a>
+<a href="{{ url_for('routines') }}">
+        <div class="font-bold text-gray-700 rounded-full bg-white flex flex-col items-center justify-center font-mono"
+                style="height: 250px; width: 250px; font-size: 28px; position: absolute;position: absolute; top: 775%; left: 118%;"
+                data-tilt data-tilt-scale="1.1" data-aos='fade-left'>
+                Routines<br>
+                <img src="{{ url_for('static', filename='rbg.jpg') }}" alt="Routines" style="object-fit: contain;"
+                        height="60%" width="60%">
+        </div>
+</a>
+<div class="col-md-2 col-lg-2 top-bar-margin-top" style="position: absolute;position: absolute; top:775%; left: 85%;">
+        <div class="dropdown">
+                <a id="dLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <div class="font-bold text-gray-700 rounded-full bg-white flex flex-col items-center justify-center font-mono"
+                                style="height: 250px; width: 250px; font-size: 28px;" data-tilt data-tilt-scale="1.1"
+                                data-aos='fade-left'>
+                                Mental Health<br>
+                                <img src="{{ url_for('static', filename='brain.png') }}" alt="Mental Health"
+                                        style="object-fit: contain;" height="60%" width="60%">
+                        </div>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                        <li class="pl-3 pr-3 text-indigo-500"><a href="{{ url_for('anxiety') }}">Anxiety</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li class="pl-3 pr-3 text-indigo-500"><a href="{{ url_for('asmr') }}">ASMR</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li class="pl-3 pr-3 text-indigo-500"><a href="{{ url_for('depression') }}">Depression</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li class="pl-3 pr-3 text-indigo-500"><a href="{{ url_for('anger') }}">Anger Management</a></li>
+                </ul>
+        </div>
+</div>
+<a href="{{ url_for('contact') }}">
+        <div class="font-bold text-gray-700 rounded-full bg-white flex flex-col items-center justify-center font-mono"
+                style="height: 250px; width: 250px; font-size: 28px; position: absolute;position: absolute; top: 1350%; left: 102%;"
+                data-tilt data-tilt-scale="1.1" data-aos='fade-left'>
+                Contact Us<br>
+                <img src="{{ url_for('static', filename='contact.jpg') }}" alt="Contact" style="object-fit: contain;"
+                        height="60%" width="60%">
+        </div>
+</a>
 {% endblock content %}
 {% block stylesheet %}
 <style>
         body {
-                background-image: url('https://image.freepik.com/free-vector/medical-concept-with-doctor-patients-flat-cartoon-hospital-hall_36082-555.jpg');
+                background-image: url('https://raw.githubusercontent.com/BouncyBird/hhoster/main/bgg.jpg');
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-size: cover;
