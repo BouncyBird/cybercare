@@ -385,9 +385,9 @@ def depression():
     return render_template('depression.html', title='Depression - Mental Health', route='mental_health')
 
 
-@app.route('/mentalhealth/lackocalm')
-def lackocalm():
-    return render_template('anger.html', title="Lack O' Calm - Mental Health", route='mental_health')
+@app.route('/mentalhealth/anger-management')
+def anger():
+    return render_template('anger.html', title="Anger Management - Mental Health", route='mental_health')
 
 
 @app.route('/weighttools/bmi', methods=["GET", "POST"])
