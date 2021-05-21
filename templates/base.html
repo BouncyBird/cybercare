@@ -102,7 +102,7 @@
                     </div>
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">
                         <button @click="open = !open" data-tilt data-tilt-scale="1.05"
-                            class="flex flex-row {% if route == 'mental_health' %}bg-gray-600 text-white px-2 py-2 rounded-md text-sm font-medium{% else %}text-gray-300 hover:bg-gray-500 hover:text-white px-2 py-2 rounded-md text-sm font-medium{% endif %}">
+                            class="flex flex-row {% if route == 'weighttools' %}bg-gray-600 text-white px-2 py-2 rounded-md text-sm font-medium{% else %}text-gray-300 hover:bg-gray-500 hover:text-white px-2 py-2 rounded-md text-sm font-medium{% endif %}">
                             <span>WeightTools</span>
                             <svg fill="currentColor" viewBox="0 0 20 20"
                                 :class="{'rotate-180': open, 'rotate-0': !open}"
