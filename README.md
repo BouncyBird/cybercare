@@ -1,4 +1,5 @@
 # CyberCare
+Welcome to CyberCare. Your online doctors office. Here you can do everything from finding heart-healthy recipes, to finding what disease you may have, to overcoming depression.
 
 ## Demo
 
