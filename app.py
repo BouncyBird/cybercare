@@ -25,7 +25,8 @@ disease_links = {
     'Malaria': 'https://www.cdc.gov/parasites/malaria/index.html',
     'Cholera': 'https://www.cdc.gov/cholera/treatment/index.html',
     'Measles': 'https://www.cdc.gov/measles/symptoms/signs-symptoms.html',
-    'Heart Attack': 'https://www.cdc.gov/heartdisease/heart_attack.htm'
+    'Heart Attack': 'https://www.cdc.gov/heartdisease/heart_attack.htm',
+    'Allergic Reaction': ''
 }
 
 disease_pages = {
@@ -36,7 +37,8 @@ disease_pages = {
     'Malaria': 'https://www.cdc.gov/parasites/malaria/index.html',
     'Cholera': 'https://www.cdc.gov/cholera/index.html',
     'Measles': 'https://www.cdc.gov/measles/index.html',
-    'Heart Attack': 'https://www.cdc.gov/heartdisease/heart_attack.htm'
+    'Heart Attack': 'https://www.cdc.gov/heartdisease/heart_attack.htm',
+    'Allergic Reaction': ''
 }
 
 disease_extra = {
@@ -47,7 +49,8 @@ disease_extra = {
     'Malaria': '',
     'Cholera': '',
     'Measles': '',
-    'Heart Attack': ''
+    'Heart Attack': '',
+    'Allergic Reaction': ''
 }
 
 app = Flask(__name__)
@@ -89,6 +92,8 @@ class ContactForm(FlaskForm):
 
 
 class DiseaseForm(FlaskForm):
+    gender = SelectField('Gender', choices=[
+                         ('Male', 'Male'), ('Female', 'Female')], validators=[DataRequired()])
     diarreah_vomit = BooleanField('Diarreah and Vomit')
     body_aches = BooleanField('Body Aches')
     runny_nose = BooleanField('Runny Nose')
