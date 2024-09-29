@@ -23,3 +23,6 @@ The recording was really hard as we did this online. There was a lot of backgrou
 
 ## What's next for CyberCare 
 We plan to make this a big website and the next big doctor's office continuously adding more to this website like infection checkers, and adding more to what we already have like a page on ADHD or a gender factor to our disease checker.
+
+
+Developed by Eshan Nalajala
